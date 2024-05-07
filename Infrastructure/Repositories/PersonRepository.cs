@@ -22,9 +22,11 @@ namespace Infrastructure.Repositories
             await _context.Persons.AddAsync(person);
         }
 
-        public Task DeletePerson(int personId)
+        public void DeletePerson(Person person)
         {
-            throw new NotImplementedException();
+           
+            _context.Persons.Remove(person);
+           
         }
 
         public async Task<IEnumerable<Person>> getAllPerson()

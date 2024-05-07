@@ -18,7 +18,7 @@ namespace Infrastructure.Interfaces
 
         Task CreatePerson(Person person);
 
-        Task DeletePerson(int personId);
+        void DeletePerson(Person person);
 
         Task<bool> SaveChangesAsync();
 
