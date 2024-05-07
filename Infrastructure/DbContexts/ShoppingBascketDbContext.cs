@@ -10,7 +10,20 @@ namespace Infrastructure.DbContexts
 {
     internal class ShoppingBascketDbContext : DbContext
     {
+        public ShoppingBascketDbContext(DbContextOptions<ShoppingBascketDbContext> options) : base(options)
+        {
+
+        }
+
         public DbSet<Person> MyProperty { get; set; }
+
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new MyEntityConfiguration());
+            
+        }
 
     }
 }
