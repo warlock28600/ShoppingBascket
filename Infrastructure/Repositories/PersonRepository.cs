@@ -1,5 +1,6 @@
 ﻿using Infrastructure.DbContexts;
 using Infrastructure.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using Services.Entities;
 using System;
 using System.Collections.Generic;
@@ -16,9 +17,9 @@ namespace Infrastructure.Repositories
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
-        public Task CreatePerson(Person person)
+        public async Task CreatePerson(Person person)
         {
-            throw new NotImplementedException();
+            await _context.Persons.AddAsync(person);
         }
 
         public Task DeletePerson(int personId)
@@ -26,24 +27,24 @@ namespace Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Person>> getAllPerson()
+        public async Task<IEnumerable<Person>> getAllPerson()
         {
-            throw new NotImplementedException();
+            return await _context.Persons.OrderBy(e=>e.LastName).ToListAsync();
         }
 
-        public Task<Person> GetPersonWithId(int id)
+        public async Task<Person> GetPersonWithId(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Persons.Where(e=>e.PersonId==id).FirstOrDefaultAsync();
         }
 
-        public Task<bool> PersonExists(int personId)
+        public async Task<bool> PersonExists(int personId)
         {
-            throw new NotImplementedException();
+            return await _context.Persons.AnyAsync(p => p.PersonId == personId);
         }
 
-        public Task<bool> SaveChangesAsync()
+        public async Task<bool> SaveChangesAsync()
         {
-            throw new NotImplementedException();
+            return (await _context.SaveChangesAsync() > 0);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Infrastructure.Configuration;
+using Microsoft.EntityFrameworkCore;
 using Services.Entities;
 using System;
 using System.Collections.Generic;
@@ -15,13 +16,13 @@ namespace Infrastructure.DbContexts
 
         }
 
-        public DbSet<Person> MyProperty { get; set; }
+        public DbSet<Person> Persons { get; set; }
 
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new MyEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new PersonConfiguration());
             
         }
 
