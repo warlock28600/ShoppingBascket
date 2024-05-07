@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.DbContexts
 {
-    internal class ShoppingBascketDbContext : DbContext
+    public class ShoppingBascketDbContext : DbContext
     {
         public ShoppingBascketDbContext(DbContextOptions<ShoppingBascketDbContext> options) : base(options)
         {
