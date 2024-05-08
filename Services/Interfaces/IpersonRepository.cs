@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Interfaces
+namespace Services.Interfaces
 {
-    internal interface IPersonRepository
+    public interface IpersonRepository
     {
         Task<IEnumerable<Person>> getAllPerson();
 
@@ -21,6 +21,5 @@ namespace Infrastructure.Interfaces
         void DeletePerson(Person person);
 
         Task<bool> SaveChangesAsync();
-
     }
 }
