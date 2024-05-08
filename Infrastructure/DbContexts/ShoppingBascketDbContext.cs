@@ -1,6 +1,6 @@
-﻿using Infrastructure.Configuration;
+﻿using Domain.Entity;
+using Infrastructure.Configuration;
 using Microsoft.EntityFrameworkCore;
-using Services.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

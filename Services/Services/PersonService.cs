@@ -1,5 +1,5 @@
-﻿using Services.Entities;
-using Services.Interfaces;
+﻿using Domain.Entity;
+using Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Services.Services
 {
-    public class PersonService
+    public class PersonService:IPersonService
     {
-        private readonly IpersonRepository _personRepo;
+        private readonly PersonRepository _personRepo;
 
-        public PersonService(IpersonRepository personRepo)
+        public PersonService(PersonRepository personRepo)
         {
             _personRepo = personRepo ?? throw new ArgumentNullException(nameof(personRepo));
         }

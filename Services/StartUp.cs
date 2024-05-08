@@ -1,5 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Services.Interfaces;
+﻿using Infrastructure.Repositories;
+using Microsoft.Extensions.DependencyInjection;
 using Services.Services;
 using System;
 using System.Collections.Generic;
@@ -14,8 +14,8 @@ namespace Services
         public static void AddServices(this IServiceCollection services)
         {
             //services.AddDbContext<ShoppingBascketDbContext>(options => options.UseSqlServer("Data Source=.;Initial Catalog=ProductDb;Integrated Security=true;Encrypt=false"));
-            
 
+            services.AddScoped<IPersonRepository,PersonRepository>();
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Infrastructure
         {
             //services.AddDbContext<ShoppingBascketDbContext>(options => options.UseSqlServer("Data Source=.;Initial Catalog=ProductDb;Integrated Security=true;Encrypt=false"));
 
-            services.AddScoped<IpersonRepository, PersonRepository>();
+            
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Infrastructure.Profiles
     {
         public PersonProfile()
         {
-             CreateMap<Services.Entities.Person,Services.Models.PersonDto>().ReverseMap();
+             CreateMap<Domain.Entity.Person,Domain.Models.PersonModel>().ReverseMap();
         }
     }
 }

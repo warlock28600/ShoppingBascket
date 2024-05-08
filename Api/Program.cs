@@ -1,7 +1,8 @@
 using Infrastructure.DbContexts;
+using Infrastructure.Profiles;
+using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Services;
-using Services.Interfaces;
 using Services.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,7 +21,8 @@ options.UseSqlServer("Data Source=.;Initial Catalog=ProductDb;Integrated Securit
 );
 
 builder.Services.AddAutoMapper(typeof(StartUp));
-builder.Services.AddScoped<PersonService, PersonService>();
+builder.Services.AddScoped<IPersonService,PersonService>();
+
 
 
 

@@ -1,7 +1,6 @@
-﻿using Infrastructure.DbContexts;
+﻿using Domain.Entity;
+using Infrastructure.DbContexts;
 using Microsoft.EntityFrameworkCore;
-using Services.Entities;
-using Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories
 {
-    public class PersonRepository : IpersonRepository
+    public class PersonRepository : IPersonRepository
     {
         private readonly ShoppingBascketDbContext _context;
         public PersonRepository(ShoppingBascketDbContext context)
