@@ -1,8 +1,8 @@
-﻿using AutoMapper;
+﻿using Application.Businesses;
+using AutoMapper;
+using Domain.Models;
 using Infrastructure.Profiles;
 using Microsoft.AspNetCore.Mvc;
-using Services.Models;
-using Services.Services;
 
 namespace Api.Controllers
 {
@@ -10,10 +10,10 @@ namespace Api.Controllers
     [Route("api/v1/person")]
     public class PersonController : ControllerBase
     {
-        private readonly PersonService _personService;
+        private readonly PersonBusiness _personService;
         private readonly IMapper _mapper;
 
-        public PersonController(PersonService personService, IMapper mapper)
+        public PersonController(PersonBusiness personService, IMapper mapper)
         {
             _personService = personService;
             _mapper = mapper;
@@ -21,11 +21,11 @@ namespace Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<PersonDto>>> GetAllPersons()
+        public async Task<ActionResult<IEnumerable<PersonModel>>> GetAllPersons()
         {
 
             var persons = await _personService.GetPersons();
-             var personToReturn=_mapper.Map<PersonDto>(persons);
+             var personToReturn=_mapper.Map<PersonModel>(persons);
             return Ok(personToReturn);
         }
 

@@ -12,6 +12,9 @@ namespace Infrastructure.Repositories
     public class PersonRepository : IPersonRepository
     {
         private readonly ShoppingBascketDbContext _context;
+
+        
+
         public PersonRepository(ShoppingBascketDbContext context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));

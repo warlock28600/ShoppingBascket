@@ -1,12 +1,13 @@
 ﻿using Domain.Entity;
 using Infrastructure.Repositories;
+using Service.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Services.Services
+namespace Service.Services
 {
     public class PersonService:IPersonService
     {
