@@ -22,12 +22,11 @@ options.UseSqlServer("Data Source=.;Initial Catalog=ProductDb;Integrated Securit
             b => b.MigrationsAssembly("Api"))
 );
 
-builder.Services.AddAutoMapper(typeof(Infrastructure.StartUp));
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 builder.Services.AddApplication().AddInfrastructure();
 
-builder.Services.AddScoped<IPersonBusiness, PersonBusiness>();
-builder.Services.AddScoped<IPersonRepository,PersonRepository>();
+
 
 
 void Configure(IApplicationBuilder app, IWebHostEnvironment env)

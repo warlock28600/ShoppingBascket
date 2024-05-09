@@ -10,9 +10,9 @@ namespace Application.Businesses
 {
     public class PersonBusiness : IPersonBusiness
     {
-        private readonly PersonRepository _PersonRepo;
+        private readonly IPersonRepository _PersonRepo;
 
-        public PersonBusiness(PersonRepository personRepo)
+        public PersonBusiness(IPersonRepository personRepo)
         {
             _PersonRepo = personRepo;
         }

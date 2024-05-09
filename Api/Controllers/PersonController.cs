@@ -10,10 +10,10 @@ namespace Api.Controllers
     [Route("api/v1/person")]
     public class PersonController : ControllerBase
     {
-        private readonly PersonBusiness _personService;
+        private readonly IPersonBusiness _personService;
         private readonly IMapper _mapper;
 
-        public PersonController(PersonBusiness personService, IMapper mapper)
+        public PersonController(IPersonBusiness personService, IMapper mapper)
         {
             _personService = personService;
             _mapper = mapper;
