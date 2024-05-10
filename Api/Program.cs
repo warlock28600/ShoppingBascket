@@ -22,7 +22,7 @@ options.UseSqlServer("Data Source=.;Initial Catalog=ProductDb;Integrated Securit
             b => b.MigrationsAssembly("Api"))
 );
 
-builder.Services.AddAutoMapper(typeof(Program).Assembly);
+
 
 builder.Services.AddApplication().AddInfrastructure();
 

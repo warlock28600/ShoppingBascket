@@ -1,4 +1,5 @@
 ﻿using Domain.Entity;
+using Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,9 @@ namespace Application.Businesses
 {
     public interface IPersonBusiness
     {
-        Task<IEnumerable<Person>> GetPersons();
+        Task<IEnumerable<PersonModel>> GetPersons();
 
-        Task<Person> GetPersonWithId(int Id);
+        Task<PersonModel> GetPersonWithId(int Id);
 
         Task  CraetePerson(Person person);
 

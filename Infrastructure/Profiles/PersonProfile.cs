@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace Infrastructure.Profiles
     {
         public PersonProfile()
         {
-             CreateMap<Domain.Entity.Person,Domain.Models.PersonModel>().ReverseMap();
+            CreateMap<Domain.Entity.Person,Domain.Models.PersonModel>().ReverseMap();
         }
     }
 }

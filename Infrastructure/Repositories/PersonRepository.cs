@@ -1,4 +1,6 @@
-﻿using Domain.Entity;
+﻿using AutoMapper;
+using Domain.Entity;
+using Domain.Models;
 using Infrastructure.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -13,11 +15,14 @@ namespace Infrastructure.Repositories
     {
         private readonly ShoppingBascketDbContext _context;
 
+        private readonly IMapper _mapper;
+
         
 
-        public PersonRepository(ShoppingBascketDbContext context)
+        public PersonRepository(ShoppingBascketDbContext context , IMapper mapper)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
+            _mapper = mapper ?? throw new ArgumentNullException();
         }
         public async Task CreatePerson(Person person)
         {
@@ -31,14 +36,25 @@ namespace Infrastructure.Repositories
            
         }
 
-        public async Task<IEnumerable<Person>> getAllPerson()
+        public async Task<IEnumerable<PersonModel>> getAllPerson()
         {
-            return await _context.Persons.OrderBy(e=>e.LastName).ToListAsync();
+            var persons= await _context.Persons.OrderBy(e=>e.LastName).ToListAsync();
+
+            if(persons.Count > 0)
+            {
+                return _mapper.Map<IEnumerable<PersonModel>>(persons);
+            }
+
+            else return null ;
+
+
         }
 
-        public async Task<Person> GetPersonWithId(int id)
+        public async Task<PersonModel> GetPersonWithId(int id)
         {
-            return await _context.Persons.Where(e=>e.PersonId==id).FirstOrDefaultAsync();
+            var person= await _context.Persons.Where(e=>e.PersonId==id).FirstOrDefaultAsync();
+
+            return _mapper.Map<PersonModel>(person);
         }
 
         public async Task<bool> PersonExists(int personId)

@@ -1,4 +1,5 @@
 ﻿using Domain.Entity;
+using Domain.Models;
 using Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
@@ -24,16 +25,19 @@ namespace Application.Businesses
 
         public async Task DeletePerson(int Id)
         {
-            var person=await _PersonRepo.GetPersonWithId(Id);
-             _PersonRepo.DeletePerson(person);
+            //var person=await _PersonRepo.GetPersonWithId(Id);
+            //var personToDelete=
+            // _PersonRepo.DeletePerson(person);
+
+           
         }
 
-        public async Task<IEnumerable<Person>> GetPersons()
+        public async Task<IEnumerable<PersonModel>> GetPersons()
         {
             return await _PersonRepo.getAllPerson();
         }
 
-        public async Task<Person> GetPersonWithId(int id)
+        public async Task<PersonModel> GetPersonWithId(int id)
         {
             var person = await _PersonRepo.GetPersonWithId(id);
             return person;

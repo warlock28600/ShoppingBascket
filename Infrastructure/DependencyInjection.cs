@@ -13,9 +13,11 @@ namespace Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
             services.AddScoped<IPersonRepository, PersonRepository>();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             return services;
 
-            
+            //services.AddAutoMapper(typeof().Assembly);
+
         }
     }
 }
