@@ -23,18 +23,20 @@ namespace Api.Controllers
         [HttpGet("AllPersons")]
         public async Task<ActionResult<IEnumerable<PersonModel>>> GetAllPersons()
         {
-
             var persons = await _personService.GetPersons();
-
             if (persons == null)
             {
                 return NoContent();  
             }
-
             return Ok(persons);
 
         }
+        public async Task<ActionResult<PersonModel>> GetPersonWithId(int id)
+        {
+            var person=await _personService.GetPersonWithId(id);
 
+            return Ok(person);
+        }
 
 
     }
