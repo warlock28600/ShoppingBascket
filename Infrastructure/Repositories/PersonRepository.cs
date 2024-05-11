@@ -24,9 +24,14 @@ namespace Infrastructure.Repositories
             _context = context ?? throw new ArgumentNullException(nameof(context));
             _mapper = mapper ?? throw new ArgumentNullException();
         }
-        public async Task CreatePerson(Person person)
+
+        public async void CreatePerson(PersonModel person)
         {
-            await _context.Persons.AddAsync(person);
+            var personToSave = _mapper.Map<Person>(person);
+            await _context.Persons.AddAsync(personToSave);
+            
+         
+            
         }
 
         public void DeletePerson(Person person)

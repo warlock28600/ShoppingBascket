@@ -1,4 +1,6 @@
-﻿using Infrastructure.Repositories;
+﻿using Infrastructure.DbContexts;
+using Infrastructure.Repositories;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -14,9 +16,12 @@ namespace Infrastructure
         {
             services.AddScoped<IPersonRepository, PersonRepository>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddDbContext<ShoppingBascketDbContext>(options =>
+            options.UseSqlServer("Data Source=.;Initial Catalog=ProductDb;Integrated Security=true;Encrypt=false"));
             return services;
 
             //services.AddAutoMapper(typeof().Assembly);
+
 
         }
     }

@@ -14,6 +14,7 @@ namespace Infrastructure.Configuration
         public void Configure(EntityTypeBuilder<Person> builder)
         {
             builder.HasKey(e => e.PersonId);
+            builder.Property(e=>e.PersonId).ValueGeneratedOnAdd();
             builder.Property(e=>e.FirstName).HasMaxLength(50).IsRequired();
             builder.Property(e=>e.LastName).HasMaxLength(50).IsRequired();
             builder.Property(e => e.Email).HasMaxLength(60);

@@ -18,9 +18,10 @@ namespace Application.Businesses
             _PersonRepo = personRepo;
         }
 
-        public async Task CraetePerson(Person person)
+        public async void CraetePerson(PersonModel person)
         {
-            await _PersonRepo.CreatePerson(person);
+             _PersonRepo.CreatePerson(person);
+             _PersonRepo.SaveChangesAsync();
         }
 
         public async Task DeletePerson(int Id)

@@ -31,11 +31,21 @@ namespace Api.Controllers
             return Ok(persons);
 
         }
+        [HttpGet("Person")]
         public async Task<ActionResult<PersonModel>> GetPersonWithId(int id)
         {
             var person=await _personService.GetPersonWithId(id);
 
             return Ok(person);
+        }
+
+        [HttpPost]
+        public async void AddPerson(PersonModel person)
+        {
+             _personService.CraetePerson(person);
+
+            Ok();
+          
         }
 
 
