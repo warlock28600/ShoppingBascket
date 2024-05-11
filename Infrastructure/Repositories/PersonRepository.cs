@@ -17,8 +17,7 @@ namespace Infrastructure.Repositories
 
         private readonly IMapper _mapper;
 
-        
-
+       
         public PersonRepository(ShoppingBascketDbContext context , IMapper mapper)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));

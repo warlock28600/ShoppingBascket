@@ -18,6 +18,8 @@ namespace Infrastructure.DbContexts
 
         public DbSet<Person> Persons { get; set; }
 
+        public DbSet<Product> Products { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
