@@ -17,46 +17,46 @@ namespace Infrastructure.Repositories
 
         private readonly IMapper _mapper;
 
-       
-        public PersonRepository(ShoppingBascketDbContext context , IMapper mapper)
+
+        public PersonRepository(ShoppingBascketDbContext context, IMapper mapper)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
             _mapper = mapper ?? throw new ArgumentNullException();
         }
 
-        public async void CreatePerson(PersonModel person)
+        public async void CreatePerson(PersonToCreateModel person)
         {
             var personToSave = _mapper.Map<Person>(person);
             await _context.Persons.AddAsync(personToSave);
-            
-         
-            
+             SaveChangesAsync();
+
         }
 
-        public void DeletePerson(Person person)
+        public async void DeletePersonAsync(int id)
         {
-           
-            _context.Persons.Remove(person);
-           
+            var person =  GetPersonWithId(id);
+            if(person != null)
+            {
+                var personToDelete = _mapper.Map<Person>(person);
+                _context.Persons.Remove(personToDelete);
+            }
+            
         }
 
         public async Task<IEnumerable<PersonModel>> getAllPerson()
         {
-            var persons= await _context.Persons.OrderBy(e=>e.LastName).ToListAsync();
+            var persons = await _context.Persons.OrderBy(e => e.LastName).ToListAsync();
 
-            if(persons.Count > 0)
+            if (persons.Count > 0)
             {
                 return _mapper.Map<IEnumerable<PersonModel>>(persons);
             }
-
-            else return null ;
-
-
+            else return null;
         }
 
         public async Task<PersonModel> GetPersonWithId(int id)
         {
-            var person= await _context.Persons.Where(e=>e.PersonId==id).FirstOrDefaultAsync();
+            var person = await _context.Persons.Where(e => e.PersonId == id).FirstOrDefaultAsync();
 
             return _mapper.Map<PersonModel>(person);
         }

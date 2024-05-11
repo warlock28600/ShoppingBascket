@@ -40,12 +40,20 @@ namespace Api.Controllers
         }
 
         [HttpPost]
-        public async void AddPerson(PersonModel person)
+        public async void AddPerson(PersonToCreateModel person)
         {
              _personService.CraetePerson(person);
 
             Ok();
           
+        }
+
+        [HttpDelete]
+        public void DeletePerson(int id)
+        {
+            _personService.DeletePerson(id);
+
+            Ok();
         }
 
 

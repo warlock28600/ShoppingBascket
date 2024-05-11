@@ -18,19 +18,15 @@ namespace Application.Businesses
             _PersonRepo = personRepo;
         }
 
-        public async void CraetePerson(PersonModel person)
+        public async void CraetePerson(PersonToCreateModel person)
         {
              _PersonRepo.CreatePerson(person);
-             _PersonRepo.SaveChangesAsync();
+            
         }
 
         public async Task DeletePerson(int Id)
         {
-            //var person=await _PersonRepo.GetPersonWithId(Id);
-            //var personToDelete=
-            // _PersonRepo.DeletePerson(person);
-
-           
+          _PersonRepo.DeletePersonAsync(Id);
         }
 
         public async Task<IEnumerable<PersonModel>> GetPersons()

@@ -14,7 +14,7 @@ namespace Application.Businesses
 
         Task<PersonModel> GetPersonWithId(int Id);
 
-        void  CraetePerson(PersonModel person);
+        void  CraetePerson(PersonToCreateModel person);
 
         Task DeletePerson(int Id);
 

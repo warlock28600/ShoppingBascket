@@ -13,6 +13,8 @@ namespace Infrastructure.Profiles
         public PersonProfile()
         {
             CreateMap<Domain.Entity.Person,Domain.Models.PersonModel>().ReverseMap();
+
+            CreateMap<Domain.Entity.Person, Domain.Models.PersonToCreateModel>().ReverseMap();
         }
     }
 }

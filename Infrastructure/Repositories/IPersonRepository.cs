@@ -17,9 +17,9 @@ namespace Infrastructure.Repositories
 
         Task<bool> PersonExists(int personId);
 
-        void CreatePerson(PersonModel person);
+        void CreatePerson(PersonToCreateModel person);
 
-        void DeletePerson(Person person);
+        void DeletePersonAsync(int id);
 
         Task<bool> SaveChangesAsync();
     }
